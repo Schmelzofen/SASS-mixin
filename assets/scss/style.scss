@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+@mixin flex-style($d,$jc,$it,$ff){
+    display: $d;
+    justify-content: $jc;
+    align-items: $it;
+    flex-flow: $ff;
+}
+
+@mixin PadMar($pd, $mg){
+    padding: $pd;
+    margin: $mg;
+}
+
+@mixin WidthHeight($w, $h){
+    width: $w;
+    height: $h;
+}
+
+.header{
+    height: 6rem;
+	text-align: center;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	padding: 1.5rem;
+    h1,h2{
+        font-size: 1rem;
+    }
+}
+
+.nav_links{
+	background-color: rgba(0, 0, 255, 0.514);
+    @include flex-style(flex,center,normal,nowrap);
+    @include PadMar(0px, 1rem 0);
+}
+
+li{
+    padding:1rem;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main{
+    @include flex-style(flex,center,center,column nowrap)
+}
+
+.section_text{
+    h3{
+        text-align: center;
+    }
+    .section_images{
+        margin: 1rem;
+        @include flex-style(flex,center,center,column nowrap)
+    }
+}
+
+img{
+    margin: 0 0.5rem 1rem 0.5rem;
+    @include WidthHeight(18rem, 12rem);
+}
+
+.aside{
+	margin: 1rem;
+    @include flex-style(flex,center,normal,column nowrap)
+}
+
+.first_aside, .second_aside, .third_aside, .fourth_aside {
+	border: 0.2rem solid rgba(0, 0, 255, 0.678);    
+    @include PadMar(1rem,0 0 1rem 0);
+}
+
+.footer{
+    height: 5rem;
+	margin-top: 1rem;
+	background-color: rgba(0, 0, 255, 0.678);
+    .footer_links{
+        margin-bottom: 1rem;
+        @include flex-style(flex,center,normal,nowrap)
+    }
+}
+
+@media screen and (min-width: 600px) {
+	.section_text {
+        width: 70%;
+        .section_images{
+            @include flex-style(flex,normal,normal,row wrap)
+        }
+	}
+	.aside {
+        @include flex-style(flex,center,center,row wrap)
+	}
+
+	.first_aside, .second_aside, .third_aside, .fourth_aside {
+        width: 45%;
+        margin: 0.5rem;
+	}
+}
